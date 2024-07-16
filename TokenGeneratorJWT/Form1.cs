@@ -1,4 +1,5 @@
 using Microsoft.IdentityModel.Tokens;
+using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -37,8 +38,15 @@ namespace TokenGeneratorJWT
                 signingCredentials: credentials);
 
             var tokenString = new JwtSecurityTokenHandler().WriteToken(token);
+            
+            string PayloadJSON = token.Payload.SerializeToJson();
 
-            textBoxJwtToken.Text = tokenString;
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine(tokenString);
+            sb.AppendLine("");
+            sb.AppendLine(PayloadJSON);
+           
+            textBoxJwtToken.Text = sb.ToString();
 
         }
 

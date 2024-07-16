@@ -138,8 +138,10 @@
             textBoxJwtToken.Multiline = true;
             textBoxJwtToken.Name = "textBoxJwtToken";
             textBoxJwtToken.ReadOnly = true;
-            textBoxJwtToken.Size = new Size(510, 69);
+            textBoxJwtToken.ScrollBars = ScrollBars.Both;
+            textBoxJwtToken.Size = new Size(510, 100);
             textBoxJwtToken.TabIndex = 10;
+            textBoxJwtToken.TabStop = false;
             // 
             // errorProvider1
             // 
