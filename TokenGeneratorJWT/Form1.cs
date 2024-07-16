@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using System.Text.Json;
+using System.Text.Json.Nodes;
 
 
 
@@ -39,7 +41,7 @@ namespace TokenGeneratorJWT
 
             var tokenString = new JwtSecurityTokenHandler().WriteToken(token);
             
-            string PayloadJSON = token.Payload.SerializeToJson();
+            string PayloadJSON = JsonNode.Parse(token.Payload.SerializeToJson()).ToString();
 
             StringBuilder sb = new StringBuilder();
             sb.AppendLine(tokenString);
