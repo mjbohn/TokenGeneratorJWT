@@ -44,6 +44,8 @@
             label6 = new Label();
             fontDialog1 = new FontDialog();
             textBoxKeyLength = new TextBox();
+            label7 = new Label();
+            textBoxExpires = new TextBox();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             SuspendLayout();
             // 
@@ -71,7 +73,7 @@
             // 
             buttonBuildToken.Enabled = false;
             buttonBuildToken.Font = new Font("Segoe UI", 7F, FontStyle.Bold);
-            buttonBuildToken.Location = new Point(234, 178);
+            buttonBuildToken.Location = new Point(234, 161);
             buttonBuildToken.Name = "buttonBuildToken";
             buttonBuildToken.Size = new Size(75, 23);
             buttonBuildToken.TabIndex = 2;
@@ -100,7 +102,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label2.Location = new Point(17, 152);
+            label2.Location = new Point(17, 135);
             label2.Name = "label2";
             label2.Size = new Size(43, 15);
             label2.TabIndex = 7;
@@ -108,7 +110,7 @@
             // 
             // textBoxIssuer
             // 
-            textBoxIssuer.Location = new Point(109, 149);
+            textBoxIssuer.Location = new Point(109, 132);
             textBoxIssuer.Name = "textBoxIssuer";
             textBoxIssuer.Size = new Size(100, 23);
             textBoxIssuer.TabIndex = 6;
@@ -117,7 +119,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label4.Location = new Point(17, 181);
+            label4.Location = new Point(17, 164);
             label4.Name = "label4";
             label4.Size = new Size(62, 15);
             label4.TabIndex = 9;
@@ -125,7 +127,7 @@
             // 
             // textBoxAudience
             // 
-            textBoxAudience.Location = new Point(109, 178);
+            textBoxAudience.Location = new Point(109, 161);
             textBoxAudience.Name = "textBoxAudience";
             textBoxAudience.Size = new Size(100, 23);
             textBoxAudience.TabIndex = 8;
@@ -158,9 +160,9 @@
             label6.Font = new Font("Segoe UI", 7F);
             label6.Location = new Point(109, 51);
             label6.Name = "label6";
-            label6.Size = new Size(147, 12);
+            label6.Size = new Size(154, 12);
             label6.TabIndex = 12;
-            label6.Text = "Key must have 256 bits (32 char)";
+            label6.Text = "Key must be >= 256 bits (32 char)";
             // 
             // textBoxKeyLength
             // 
@@ -171,6 +173,25 @@
             textBoxKeyLength.TabIndex = 13;
             textBoxKeyLength.TabStop = false;
             // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            label7.Location = new Point(17, 193);
+            label7.Name = "label7";
+            label7.Size = new Size(82, 15);
+            label7.TabIndex = 14;
+            label7.Text = "Expires (min):";
+            // 
+            // textBoxExpires
+            // 
+            textBoxExpires.Location = new Point(109, 190);
+            textBoxExpires.Name = "textBoxExpires";
+            textBoxExpires.Size = new Size(100, 23);
+            textBoxExpires.TabIndex = 15;
+            textBoxExpires.Text = "0";
+            textBoxExpires.Validating += textBoxExpires_Validating;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -178,6 +199,8 @@
             AutoValidate = AutoValidate.EnableAllowFocusChange;
             CausesValidation = false;
             ClientSize = new Size(534, 350);
+            Controls.Add(textBoxExpires);
+            Controls.Add(label7);
             Controls.Add(textBoxSecurityKey);
             Controls.Add(textBoxKeyLength);
             Controls.Add(label1);
@@ -216,5 +239,7 @@
         private Label label6;
         private FontDialog fontDialog1;
         private TextBox textBoxKeyLength;
+        private Label label7;
+        private TextBox textBoxExpires;
     }
 }

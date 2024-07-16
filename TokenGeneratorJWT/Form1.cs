@@ -9,6 +9,7 @@ namespace TokenGeneratorJWT
 {
     public partial class Form1 : Form
     {
+        private int expires = 0;
         public Form1()
         {
             InitializeComponent();
@@ -32,7 +33,7 @@ namespace TokenGeneratorJWT
                 issuer: textBoxIssuer.Text,
                 audience: textBoxAudience.Text,
                 claims: claims,
-                expires: DateTime.Now.AddMinutes(30),
+                expires: expires > 0 ? DateTime.Now.AddMinutes(expires) : null,
                 signingCredentials: credentials);
 
             var tokenString = new JwtSecurityTokenHandler().WriteToken(token);
@@ -74,6 +75,23 @@ namespace TokenGeneratorJWT
         {
             TextBox tb = sender as TextBox;
             ShowKeylength(tb);
+        }
+
+        private void textBoxExpires_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+            if (!int.TryParse(tb.Text, out this.expires))
+            {
+                //textBoxExpires.SelectAll();
+                e.Cancel = true;
+                if (MessageBox.Show("Expires must be INT", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error) == DialogResult.OK)
+                {
+                    tb.Focus();
+                    tb.SelectAll();
+                }
+
+            }
+
         }
     }
 }
