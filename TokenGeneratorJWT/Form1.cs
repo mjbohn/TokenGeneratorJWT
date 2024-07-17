@@ -13,6 +13,9 @@ namespace TokenGeneratorJWT
     public partial class Form1 : Form
     {
         private int expires = 0;
+        private string TokenString { get; set; }
+        private string PayloadJSON { get; set; }
+
         public Form1()
         {
             InitializeComponent();
@@ -39,15 +42,15 @@ namespace TokenGeneratorJWT
                 expires: expires > 0 ? DateTime.Now.AddMinutes(expires) : null,
                 signingCredentials: credentials);
 
-            var tokenString = new JwtSecurityTokenHandler().WriteToken(token);
-            
-            string PayloadJSON = JsonNode.Parse(token.Payload.SerializeToJson()).ToString();
+            TokenString = new JwtSecurityTokenHandler().WriteToken(token);
+
+            PayloadJSON = JsonNode.Parse(token.Payload.SerializeToJson()).ToString();
 
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine(tokenString);
+            sb.AppendLine(TokenString);
             sb.AppendLine("");
             sb.AppendLine(PayloadJSON);
-           
+
             textBoxJwtToken.Text = sb.ToString();
 
         }
@@ -103,5 +106,33 @@ namespace TokenGeneratorJWT
             }
 
         }
+
+
+        #region ContextMenuTextBox
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(TokenString))
+            {
+                Clipboard.SetText(TokenString);
+            }
+
+        }
+
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(PayloadJSON))
+            {
+                Clipboard.SetText(PayloadJSON);
+            }
+        }
+
+        private void copyBothToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(textBoxJwtToken.Text))
+            {
+                Clipboard.SetText(textBoxJwtToken.Text);
+            }
+        }
+        #endregion
     }
 }

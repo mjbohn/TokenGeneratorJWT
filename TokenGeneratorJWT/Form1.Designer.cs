@@ -39,6 +39,12 @@
             label4 = new Label();
             textBoxAudience = new TextBox();
             textBoxJwtToken = new TextBox();
+            contextMenuStrip1 = new ContextMenuStrip(components);
+            toolStripTextBox1 = new ToolStripTextBox();
+            toolStripSeparator1 = new ToolStripSeparator();
+            toolStripMenuItem1 = new ToolStripMenuItem();
+            toolStripMenuItem2 = new ToolStripMenuItem();
+            copyBothToolStripMenuItem = new ToolStripMenuItem();
             errorProvider1 = new ErrorProvider(components);
             label5 = new Label();
             label6 = new Label();
@@ -46,6 +52,7 @@
             textBoxKeyLength = new TextBox();
             label7 = new Label();
             textBoxExpires = new TextBox();
+            contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             SuspendLayout();
             // 
@@ -134,6 +141,7 @@
             // 
             // textBoxJwtToken
             // 
+            textBoxJwtToken.ContextMenuStrip = contextMenuStrip1;
             textBoxJwtToken.Location = new Point(12, 238);
             textBoxJwtToken.Multiline = true;
             textBoxJwtToken.Name = "textBoxJwtToken";
@@ -142,6 +150,46 @@
             textBoxJwtToken.Size = new Size(510, 100);
             textBoxJwtToken.TabIndex = 10;
             textBoxJwtToken.TabStop = false;
+            // 
+            // contextMenuStrip1
+            // 
+            contextMenuStrip1.Items.AddRange(new ToolStripItem[] { toolStripTextBox1, toolStripSeparator1, toolStripMenuItem1, toolStripMenuItem2, copyBothToolStripMenuItem });
+            contextMenuStrip1.Name = "contextMenuStrip1";
+            contextMenuStrip1.Size = new Size(161, 100);
+            // 
+            // toolStripTextBox1
+            // 
+            toolStripTextBox1.Font = new Font("Segoe UI", 8F, FontStyle.Bold);
+            toolStripTextBox1.Name = "toolStripTextBox1";
+            toolStripTextBox1.ReadOnly = true;
+            toolStripTextBox1.Size = new Size(100, 22);
+            toolStripTextBox1.Text = "Copy to clipboard";
+            // 
+            // toolStripSeparator1
+            // 
+            toolStripSeparator1.Name = "toolStripSeparator1";
+            toolStripSeparator1.Size = new Size(157, 6);
+            // 
+            // toolStripMenuItem1
+            // 
+            toolStripMenuItem1.Name = "toolStripMenuItem1";
+            toolStripMenuItem1.Size = new Size(160, 22);
+            toolStripMenuItem1.Text = "copy token";
+            toolStripMenuItem1.Click += toolStripMenuItem1_Click;
+            // 
+            // toolStripMenuItem2
+            // 
+            toolStripMenuItem2.Name = "toolStripMenuItem2";
+            toolStripMenuItem2.Size = new Size(160, 22);
+            toolStripMenuItem2.Text = "copy JSON";
+            toolStripMenuItem2.Click += toolStripMenuItem2_Click;
+            // 
+            // copyBothToolStripMenuItem
+            // 
+            copyBothToolStripMenuItem.Name = "copyBothToolStripMenuItem";
+            copyBothToolStripMenuItem.Size = new Size(160, 22);
+            copyBothToolStripMenuItem.Text = "copy both";
+            copyBothToolStripMenuItem.Click += copyBothToolStripMenuItem_Click;
             // 
             // errorProvider1
             // 
@@ -219,6 +267,8 @@
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "JWT Generator";
+            contextMenuStrip1.ResumeLayout(false);
+            contextMenuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -243,5 +293,11 @@
         private TextBox textBoxKeyLength;
         private Label label7;
         private TextBox textBoxExpires;
+        private ContextMenuStrip contextMenuStrip1;
+        private ToolStripMenuItem toolStripMenuItem1;
+        private ToolStripMenuItem toolStripMenuItem2;
+        private ToolStripMenuItem copyBothToolStripMenuItem;
+        private ToolStripTextBox toolStripTextBox1;
+        private ToolStripSeparator toolStripSeparator1;
     }
 }
