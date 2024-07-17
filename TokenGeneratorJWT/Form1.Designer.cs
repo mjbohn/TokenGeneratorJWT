@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            label1 = new Label();
+            labelSecKey = new Label();
             textBoxSecurityKey = new TextBox();
             buttonBuildToken = new Button();
             textBoxUserId = new TextBox();
-            label3 = new Label();
-            label2 = new Label();
+            labelSub = new Label();
+            labelIss = new Label();
             textBoxIssuer = new TextBox();
-            label4 = new Label();
+            labelAud = new Label();
             textBoxAudience = new TextBox();
             textBoxJwtToken = new TextBox();
             contextMenuStrip1 = new ContextMenuStrip(components);
@@ -49,7 +49,7 @@
             label6 = new Label();
             fontDialog1 = new FontDialog();
             textBoxKeyLength = new TextBox();
-            label7 = new Label();
+            labelExp = new Label();
             textBoxExpires = new TextBox();
             groupBox1 = new GroupBox();
             contextMenuStrip1.SuspendLayout();
@@ -57,15 +57,15 @@
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
-            // label1
+            // labelSecKey
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label1.Location = new Point(17, 28);
-            label1.Name = "label1";
-            label1.Size = new Size(80, 15);
-            label1.TabIndex = 0;
-            label1.Text = "Security Key:";
+            labelSecKey.AutoSize = true;
+            labelSecKey.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            labelSecKey.Location = new Point(17, 28);
+            labelSecKey.Name = "labelSecKey";
+            labelSecKey.Size = new Size(80, 15);
+            labelSecKey.TabIndex = 0;
+            labelSecKey.Text = "Security Key:";
             // 
             // textBoxSecurityKey
             // 
@@ -96,25 +96,25 @@
             textBoxUserId.Size = new Size(100, 23);
             textBoxUserId.TabIndex = 2;
             // 
-            // label3
+            // labelSub
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label3.Location = new Point(7, 28);
-            label3.Name = "label3";
-            label3.Size = new Size(53, 15);
-            label3.TabIndex = 5;
-            label3.Text = "User-ID:";
+            labelSub.AutoSize = true;
+            labelSub.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            labelSub.Location = new Point(7, 28);
+            labelSub.Name = "labelSub";
+            labelSub.Size = new Size(52, 15);
+            labelSub.TabIndex = 5;
+            labelSub.Text = "Subject:";
             // 
-            // label2
+            // labelIss
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label2.Location = new Point(7, 57);
-            label2.Name = "label2";
-            label2.Size = new Size(43, 15);
-            label2.TabIndex = 7;
-            label2.Text = "Issuer:";
+            labelIss.AutoSize = true;
+            labelIss.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            labelIss.Location = new Point(7, 57);
+            labelIss.Name = "labelIss";
+            labelIss.Size = new Size(43, 15);
+            labelIss.TabIndex = 7;
+            labelIss.Text = "Issuer:";
             // 
             // textBoxIssuer
             // 
@@ -123,15 +123,15 @@
             textBoxIssuer.Size = new Size(100, 23);
             textBoxIssuer.TabIndex = 3;
             // 
-            // label4
+            // labelAud
             // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label4.Location = new Point(7, 86);
-            label4.Name = "label4";
-            label4.Size = new Size(62, 15);
-            label4.TabIndex = 9;
-            label4.Text = "Audience:";
+            labelAud.AutoSize = true;
+            labelAud.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            labelAud.Location = new Point(7, 86);
+            labelAud.Name = "labelAud";
+            labelAud.Size = new Size(62, 15);
+            labelAud.TabIndex = 9;
+            labelAud.Text = "Audience:";
             // 
             // textBoxAudience
             // 
@@ -216,15 +216,15 @@
             textBoxKeyLength.TabIndex = 0;
             textBoxKeyLength.TabStop = false;
             // 
-            // label7
+            // labelExp
             // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label7.Location = new Point(7, 115);
-            label7.Name = "label7";
-            label7.Size = new Size(82, 15);
-            label7.TabIndex = 14;
-            label7.Text = "Expires (min):";
+            labelExp.AutoSize = true;
+            labelExp.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            labelExp.Location = new Point(7, 115);
+            labelExp.Name = "labelExp";
+            labelExp.Size = new Size(82, 15);
+            labelExp.TabIndex = 14;
+            labelExp.Text = "Expires (min):";
             // 
             // textBoxExpires
             // 
@@ -240,11 +240,11 @@
             groupBox1.Controls.Add(textBoxIssuer);
             groupBox1.Controls.Add(textBoxUserId);
             groupBox1.Controls.Add(textBoxExpires);
-            groupBox1.Controls.Add(label3);
-            groupBox1.Controls.Add(label7);
-            groupBox1.Controls.Add(label2);
+            groupBox1.Controls.Add(labelSub);
+            groupBox1.Controls.Add(labelExp);
+            groupBox1.Controls.Add(labelIss);
             groupBox1.Controls.Add(textBoxAudience);
-            groupBox1.Controls.Add(label4);
+            groupBox1.Controls.Add(labelAud);
             groupBox1.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             groupBox1.Location = new Point(12, 66);
             groupBox1.Name = "groupBox1";
@@ -264,7 +264,7 @@
             Controls.Add(groupBox1);
             Controls.Add(textBoxSecurityKey);
             Controls.Add(textBoxKeyLength);
-            Controls.Add(label1);
+            Controls.Add(labelSecKey);
             Controls.Add(textBoxJwtToken);
             Controls.Add(label6);
             Controls.Add(buttonBuildToken);
@@ -283,21 +283,21 @@
 
         #endregion
 
-        private Label label1;
+        private Label labelSecKey;
         private TextBox textBoxSecurityKey;
         private Button buttonBuildToken;
         private TextBox textBoxUserId;
-        private Label label3;
-        private Label label2;
+        private Label labelSub;
+        private Label labelIss;
         private TextBox textBoxIssuer;
-        private Label label4;
+        private Label labelAud;
         private TextBox textBoxAudience;
         private TextBox textBoxJwtToken;
         private ErrorProvider errorProvider1;
         private Label label6;
         private FontDialog fontDialog1;
         private TextBox textBoxKeyLength;
-        private Label label7;
+        private Label labelExp;
         private TextBox textBoxExpires;
         private ContextMenuStrip contextMenuStrip1;
         private ToolStripMenuItem toolStripMenuItem1;

@@ -19,7 +19,8 @@ namespace TokenGeneratorJWT
         public Form1()
         {
             InitializeComponent();
-            textBoxJwtToken.Focus();
+            //textBoxJwtToken.Focus();
+           
         }
 
         private void buttonBuildToken_Click(object sender, EventArgs e)
@@ -134,5 +135,8 @@ namespace TokenGeneratorJWT
             }
         }
         #endregion
+
+
+       
     }
 }
