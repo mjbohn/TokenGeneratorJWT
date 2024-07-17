@@ -46,14 +46,15 @@
             toolStripMenuItem2 = new ToolStripMenuItem();
             copyBothToolStripMenuItem = new ToolStripMenuItem();
             errorProvider1 = new ErrorProvider(components);
-            label5 = new Label();
             label6 = new Label();
             fontDialog1 = new FontDialog();
             textBoxKeyLength = new TextBox();
             label7 = new Label();
             textBoxExpires = new TextBox();
+            groupBox1 = new GroupBox();
             contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
+            groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -80,36 +81,36 @@
             // 
             buttonBuildToken.Enabled = false;
             buttonBuildToken.Font = new Font("Segoe UI", 7F, FontStyle.Bold);
-            buttonBuildToken.Location = new Point(234, 161);
+            buttonBuildToken.Location = new Point(12, 293);
             buttonBuildToken.Name = "buttonBuildToken";
-            buttonBuildToken.Size = new Size(75, 23);
-            buttonBuildToken.TabIndex = 2;
+            buttonBuildToken.Size = new Size(192, 23);
+            buttonBuildToken.TabIndex = 6;
             buttonBuildToken.Text = "build token";
             buttonBuildToken.UseVisualStyleBackColor = true;
             buttonBuildToken.Click += buttonBuildToken_Click;
             // 
             // textBoxUserId
             // 
-            textBoxUserId.Location = new Point(109, 103);
+            textBoxUserId.Location = new Point(99, 25);
             textBoxUserId.Name = "textBoxUserId";
             textBoxUserId.Size = new Size(100, 23);
-            textBoxUserId.TabIndex = 4;
+            textBoxUserId.TabIndex = 2;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label3.Location = new Point(17, 106);
+            label3.Location = new Point(7, 28);
             label3.Name = "label3";
-            label3.Size = new Size(86, 15);
+            label3.Size = new Size(53, 15);
             label3.TabIndex = 5;
-            label3.Text = "Claim User-ID:";
+            label3.Text = "User-ID:";
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label2.Location = new Point(17, 135);
+            label2.Location = new Point(7, 57);
             label2.Name = "label2";
             label2.Size = new Size(43, 15);
             label2.TabIndex = 7;
@@ -117,16 +118,16 @@
             // 
             // textBoxIssuer
             // 
-            textBoxIssuer.Location = new Point(109, 132);
+            textBoxIssuer.Location = new Point(99, 54);
             textBoxIssuer.Name = "textBoxIssuer";
             textBoxIssuer.Size = new Size(100, 23);
-            textBoxIssuer.TabIndex = 6;
+            textBoxIssuer.TabIndex = 3;
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label4.Location = new Point(17, 164);
+            label4.Location = new Point(7, 86);
             label4.Name = "label4";
             label4.Size = new Size(62, 15);
             label4.TabIndex = 9;
@@ -134,21 +135,22 @@
             // 
             // textBoxAudience
             // 
-            textBoxAudience.Location = new Point(109, 161);
+            textBoxAudience.Location = new Point(99, 83);
             textBoxAudience.Name = "textBoxAudience";
             textBoxAudience.Size = new Size(100, 23);
-            textBoxAudience.TabIndex = 8;
+            textBoxAudience.TabIndex = 4;
             // 
             // textBoxJwtToken
             // 
+            textBoxJwtToken.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             textBoxJwtToken.ContextMenuStrip = contextMenuStrip1;
-            textBoxJwtToken.Location = new Point(12, 238);
+            textBoxJwtToken.Location = new Point(12, 322);
             textBoxJwtToken.Multiline = true;
             textBoxJwtToken.Name = "textBoxJwtToken";
             textBoxJwtToken.ReadOnly = true;
             textBoxJwtToken.ScrollBars = ScrollBars.Both;
-            textBoxJwtToken.Size = new Size(510, 100);
-            textBoxJwtToken.TabIndex = 10;
+            textBoxJwtToken.Size = new Size(580, 127);
+            textBoxJwtToken.TabIndex = 0;
             textBoxJwtToken.TabStop = false;
             // 
             // contextMenuStrip1
@@ -195,15 +197,6 @@
             // 
             errorProvider1.ContainerControl = this;
             // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(109, 76);
-            label5.Name = "label5";
-            label5.Size = new Size(74, 15);
-            label5.TabIndex = 11;
-            label5.Text = "Key-Length: ";
-            // 
             // label6
             // 
             label6.AutoSize = true;
@@ -211,23 +204,23 @@
             label6.Location = new Point(109, 51);
             label6.Name = "label6";
             label6.Size = new Size(154, 12);
-            label6.TabIndex = 12;
+            label6.TabIndex = 3;
             label6.Text = "Key must be >= 256 bits (32 char)";
             // 
             // textBoxKeyLength
             // 
-            textBoxKeyLength.Location = new Point(176, 73);
+            textBoxKeyLength.Location = new Point(326, 25);
             textBoxKeyLength.Name = "textBoxKeyLength";
             textBoxKeyLength.ReadOnly = true;
             textBoxKeyLength.Size = new Size(41, 23);
-            textBoxKeyLength.TabIndex = 13;
+            textBoxKeyLength.TabIndex = 0;
             textBoxKeyLength.TabStop = false;
             // 
             // label7
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label7.Location = new Point(17, 193);
+            label7.Location = new Point(7, 115);
             label7.Name = "label7";
             label7.Size = new Size(82, 15);
             label7.TabIndex = 14;
@@ -235,41 +228,55 @@
             // 
             // textBoxExpires
             // 
-            textBoxExpires.Location = new Point(109, 190);
+            textBoxExpires.Location = new Point(99, 112);
             textBoxExpires.Name = "textBoxExpires";
             textBoxExpires.Size = new Size(100, 23);
-            textBoxExpires.TabIndex = 15;
+            textBoxExpires.TabIndex = 5;
             textBoxExpires.Text = "0";
             textBoxExpires.Validating += textBoxExpires_Validating;
             // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(textBoxIssuer);
+            groupBox1.Controls.Add(textBoxUserId);
+            groupBox1.Controls.Add(textBoxExpires);
+            groupBox1.Controls.Add(label3);
+            groupBox1.Controls.Add(label7);
+            groupBox1.Controls.Add(label2);
+            groupBox1.Controls.Add(textBoxAudience);
+            groupBox1.Controls.Add(label4);
+            groupBox1.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            groupBox1.Location = new Point(12, 66);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(580, 221);
+            groupBox1.TabIndex = 15;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Claims";
+            // 
             // Form1
             // 
+            AcceptButton = buttonBuildToken;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoValidate = AutoValidate.EnableAllowFocusChange;
             CausesValidation = false;
-            ClientSize = new Size(534, 350);
-            Controls.Add(textBoxExpires);
-            Controls.Add(label7);
+            ClientSize = new Size(604, 461);
+            Controls.Add(groupBox1);
             Controls.Add(textBoxSecurityKey);
             Controls.Add(textBoxKeyLength);
             Controls.Add(label1);
             Controls.Add(textBoxJwtToken);
             Controls.Add(label6);
-            Controls.Add(label4);
-            Controls.Add(label5);
-            Controls.Add(textBoxAudience);
-            Controls.Add(label2);
-            Controls.Add(textBoxIssuer);
-            Controls.Add(label3);
-            Controls.Add(textBoxUserId);
             Controls.Add(buttonBuildToken);
+            MaximizeBox = false;
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "JWT Generator";
             contextMenuStrip1.ResumeLayout(false);
             contextMenuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -287,7 +294,6 @@
         private TextBox textBoxAudience;
         private TextBox textBoxJwtToken;
         private ErrorProvider errorProvider1;
-        private Label label5;
         private Label label6;
         private FontDialog fontDialog1;
         private TextBox textBoxKeyLength;
@@ -299,5 +305,6 @@
         private ToolStripMenuItem copyBothToolStripMenuItem;
         private ToolStripTextBox toolStripTextBox1;
         private ToolStripSeparator toolStripSeparator1;
+        private GroupBox groupBox1;
     }
 }
