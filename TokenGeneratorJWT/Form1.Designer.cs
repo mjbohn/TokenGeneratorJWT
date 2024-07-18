@@ -47,7 +47,6 @@
             copyBothToolStripMenuItem = new ToolStripMenuItem();
             errorProvider1 = new ErrorProvider(components);
             label6 = new Label();
-            fontDialog1 = new FontDialog();
             textBoxKeyLength = new TextBox();
             labelExp = new Label();
             textBoxExpires = new TextBox();
@@ -55,10 +54,16 @@
             buttonAddClaim = new Button();
             flowLayoutPanelClaims = new FlowLayoutPanel();
             claimsControl1 = new ClaimsControl();
+            menuStripMainMenu = new MenuStrip();
+            fileToolStripMenuItem = new ToolStripMenuItem();
+            buildTokenToolStripMenuItem = new ToolStripMenuItem();
+            addClaimToolStripMenuItem = new ToolStripMenuItem();
+            exitToolStripMenuItem = new ToolStripMenuItem();
             contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             groupBox1.SuspendLayout();
             flowLayoutPanelClaims.SuspendLayout();
+            menuStripMainMenu.SuspendLayout();
             SuspendLayout();
             // 
             // labelSecKey
@@ -89,7 +94,7 @@
             buttonBuildToken.Name = "buttonBuildToken";
             buttonBuildToken.Size = new Size(192, 23);
             buttonBuildToken.TabIndex = 6;
-            buttonBuildToken.Text = "build token";
+            buttonBuildToken.Text = "build token (F5)";
             buttonBuildToken.UseVisualStyleBackColor = true;
             buttonBuildToken.Click += buttonBuildToken_Click;
             // 
@@ -146,7 +151,7 @@
             // 
             // textBoxJwtToken
             // 
-            textBoxJwtToken.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            textBoxJwtToken.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             textBoxJwtToken.ContextMenuStrip = contextMenuStrip1;
             textBoxJwtToken.Location = new Point(12, 322);
             textBoxJwtToken.Multiline = true;
@@ -266,7 +271,7 @@
             buttonAddClaim.Name = "buttonAddClaim";
             buttonAddClaim.Size = new Size(185, 20);
             buttonAddClaim.TabIndex = 16;
-            buttonAddClaim.Text = "add claim";
+            buttonAddClaim.Text = "add claim (F2)";
             buttonAddClaim.UseVisualStyleBackColor = true;
             buttonAddClaim.Click += buttonAddClaim_Click;
             // 
@@ -286,6 +291,47 @@
             claimsControl1.Size = new Size(212, 31);
             claimsControl1.TabIndex = 0;
             // 
+            // menuStripMainMenu
+            // 
+            menuStripMainMenu.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem });
+            menuStripMainMenu.Location = new Point(0, 0);
+            menuStripMainMenu.Name = "menuStripMainMenu";
+            menuStripMainMenu.Size = new Size(604, 24);
+            menuStripMainMenu.TabIndex = 16;
+            menuStripMainMenu.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { buildTokenToolStripMenuItem, addClaimToolStripMenuItem, exitToolStripMenuItem });
+            fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            fileToolStripMenuItem.Size = new Size(37, 20);
+            fileToolStripMenuItem.Text = "&File";
+            // 
+            // buildTokenToolStripMenuItem
+            // 
+            buildTokenToolStripMenuItem.Enabled = false;
+            buildTokenToolStripMenuItem.Name = "buildTokenToolStripMenuItem";
+            buildTokenToolStripMenuItem.ShortcutKeys = Keys.F5;
+            buildTokenToolStripMenuItem.Size = new Size(180, 22);
+            buildTokenToolStripMenuItem.Text = "&Build token";
+            buildTokenToolStripMenuItem.Click += buildTokenToolStripMenuItem_Click;
+            // 
+            // addClaimToolStripMenuItem
+            // 
+            addClaimToolStripMenuItem.Name = "addClaimToolStripMenuItem";
+            addClaimToolStripMenuItem.ShortcutKeys = Keys.F2;
+            addClaimToolStripMenuItem.Size = new Size(180, 22);
+            addClaimToolStripMenuItem.Text = "&Add claim";
+            addClaimToolStripMenuItem.Click += addClaimToolStripMenuItem_Click;
+            // 
+            // exitToolStripMenuItem
+            // 
+            exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            exitToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.X;
+            exitToolStripMenuItem.Size = new Size(180, 22);
+            exitToolStripMenuItem.Text = "E&xit";
+            exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -293,6 +339,7 @@
             AutoValidate = AutoValidate.EnableAllowFocusChange;
             CausesValidation = false;
             ClientSize = new Size(604, 461);
+            Controls.Add(menuStripMainMenu);
             Controls.Add(groupBox1);
             Controls.Add(textBoxSecurityKey);
             Controls.Add(textBoxKeyLength);
@@ -300,6 +347,7 @@
             Controls.Add(textBoxJwtToken);
             Controls.Add(label6);
             Controls.Add(buttonBuildToken);
+            MainMenuStrip = menuStripMainMenu;
             MaximizeBox = false;
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
@@ -310,6 +358,8 @@
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             flowLayoutPanelClaims.ResumeLayout(false);
+            menuStripMainMenu.ResumeLayout(false);
+            menuStripMainMenu.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -328,7 +378,6 @@
         private TextBox textBoxJwtToken;
         private ErrorProvider errorProvider1;
         private Label label6;
-        private FontDialog fontDialog1;
         private TextBox textBoxKeyLength;
         private Label labelExp;
         private TextBox textBoxExpires;
@@ -342,5 +391,10 @@
         private FlowLayoutPanel flowLayoutPanelClaims;
         private Button buttonAddClaim;
         private ClaimsControl claimsControl1;
+        private MenuStrip menuStripMainMenu;
+        private ToolStripMenuItem fileToolStripMenuItem;
+        private ToolStripMenuItem buildTokenToolStripMenuItem;
+        private ToolStripMenuItem addClaimToolStripMenuItem;
+        private ToolStripMenuItem exitToolStripMenuItem;
     }
 }

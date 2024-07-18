@@ -24,8 +24,18 @@ namespace TokenGeneratorJWT
         private void buttonBuildToken_Click(object sender, EventArgs e)
         {
             textBoxJwtToken.Clear();
+            SymmetricSecurityKey securityKey = null;
 
-            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(textBoxSecurityKey.Text));
+            try
+            {
+                securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(textBoxSecurityKey.Text));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
             var claims = new List<Claim>()
@@ -91,8 +101,11 @@ namespace TokenGeneratorJWT
             else
             {
                 errorProvider1.Clear();
-                buttonBuildToken.Enabled = true;
+                //buttonBuildToken.Enabled = true;
             }
+
+            buttonBuildToken.Enabled = (tb.TextLength >= 32);
+            buildTokenToolStripMenuItem.Enabled = (tb.TextLength >= 32);
 
             ShowKeylength(tb);
         }
@@ -157,9 +170,22 @@ namespace TokenGeneratorJWT
                 Clipboard.SetText(textBoxJwtToken.Text);
             }
         }
+
         #endregion
 
+        private void addClaimToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            buttonAddClaim_Click(this, EventArgs.Empty);
+        }
 
+        private void buildTokenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            buttonBuildToken_Click(this, EventArgs.Empty);
+        }
 
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
