@@ -52,6 +52,9 @@
             labelExp = new Label();
             textBoxExpires = new TextBox();
             groupBox1 = new GroupBox();
+            button2 = new Button();
+            button1 = new Button();
+            flowLayoutPanel1 = new FlowLayoutPanel();
             contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             groupBox1.SuspendLayout();
@@ -237,6 +240,9 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(button2);
+            groupBox1.Controls.Add(button1);
+            groupBox1.Controls.Add(flowLayoutPanel1);
             groupBox1.Controls.Add(textBoxIssuer);
             groupBox1.Controls.Add(textBoxUserId);
             groupBox1.Controls.Add(textBoxExpires);
@@ -252,6 +258,35 @@
             groupBox1.TabIndex = 15;
             groupBox1.TabStop = false;
             groupBox1.Text = "Claims";
+            // 
+            // button2
+            // 
+            button2.Location = new Point(14, 180);
+            button2.Name = "button2";
+            button2.Size = new Size(75, 23);
+            button2.TabIndex = 17;
+            button2.Text = "button2";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(14, 151);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 23);
+            button1.TabIndex = 16;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
+            // flowLayoutPanel1
+            // 
+            flowLayoutPanel1.AutoScroll = true;
+            flowLayoutPanel1.BorderStyle = BorderStyle.FixedSingle;
+            flowLayoutPanel1.Location = new Point(205, 15);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.Size = new Size(300, 188);
+            flowLayoutPanel1.TabIndex = 15;
             // 
             // Form1
             // 
@@ -306,5 +341,8 @@
         private ToolStripTextBox toolStripTextBox1;
         private ToolStripSeparator toolStripSeparator1;
         private GroupBox groupBox1;
+        private FlowLayoutPanel flowLayoutPanel1;
+        private Button button1;
+        private Button button2;
     }
 }

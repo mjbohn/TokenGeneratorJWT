@@ -20,7 +20,7 @@ namespace TokenGeneratorJWT
         {
             InitializeComponent();
             //textBoxJwtToken.Focus();
-           
+
         }
 
         private void buttonBuildToken_Click(object sender, EventArgs e)
@@ -30,18 +30,24 @@ namespace TokenGeneratorJWT
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(textBoxSecurityKey.Text));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
-            var claims = new[]
-        {
+            var claims = new List<Claim>()
+            {
             new Claim(JwtRegisteredClaimNames.Sub, textBoxUserId.Text),
-            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
-        };
+            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+            new Claim(JwtRegisteredClaimNames.Iat, DateTime.Now.ToString())
+            };
+
+            claims.Add(new Claim("Role", "Master2"));
 
             var token = new JwtSecurityToken(
                 issuer: textBoxIssuer.Text,
                 audience: textBoxAudience.Text,
-                claims: claims,
+                claims: claims.ToArray(),
                 expires: expires > 0 ? DateTime.Now.AddMinutes(expires) : null,
+                notBefore: DateTime.Now, // TODO add Texbox to GUI
+             
                 signingCredentials: credentials);
+
 
             TokenString = new JwtSecurityTokenHandler().WriteToken(token);
 
@@ -56,6 +62,7 @@ namespace TokenGeneratorJWT
 
         }
 
+        #region TextBoxValidations
         private void textBoxSecurityKey_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
             TextBox tb = sender as TextBox;
@@ -73,24 +80,6 @@ namespace TokenGeneratorJWT
 
             ShowKeylength(tb);
         }
-
-        private void ShowKeylength(TextBox tb)
-        {
-            textBoxKeyLength.Text = (tb.Text.Length * 8).ToString() + " bit";
-        }
-
-        private void textBoxSecurityKey_Enter(object sender, EventArgs e)
-        {
-            TextBox tb = sender as TextBox;
-            ShowKeylength(tb);
-        }
-
-        private void textBoxSecurityKey_TextChanged(object sender, EventArgs e)
-        {
-            TextBox tb = sender as TextBox;
-            ShowKeylength(tb);
-        }
-
         private void textBoxExpires_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
             TextBox tb = sender as TextBox;
@@ -107,7 +96,25 @@ namespace TokenGeneratorJWT
             }
 
         }
+        #endregion
 
+        #region TextBoxEvents
+        private void textBoxSecurityKey_Enter(object sender, EventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+            ShowKeylength(tb);
+        }
+        private void textBoxSecurityKey_TextChanged(object sender, EventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+            ShowKeylength(tb);
+        }
+        #endregion
+
+        private void ShowKeylength(TextBox tb)
+        {
+            textBoxKeyLength.Text = (tb.Text.Length * 8).ToString() + " bit";
+        }
 
         #region ContextMenuTextBox
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
@@ -137,6 +144,27 @@ namespace TokenGeneratorJWT
         #endregion
 
 
-       
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ClaimsControl cc = new ClaimsControl();
+            flowLayoutPanel1.Controls.Add(cc);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            int _i = 0;
+
+            foreach (Control control in flowLayoutPanel1.Controls)
+            {
+                if (control.GetType().Equals(typeof(ClaimsControl)))
+                {
+                    ClaimsControl ctrl = (ClaimsControl)control;
+
+                    MessageBox.Show("Found ctrl. : " + (_i++).ToString() + " : " + ctrl.textBoxClaim.Text + " : " + ctrl.textBoxValue.Text);
+
+                }
+            }
+        }
     }
 }
