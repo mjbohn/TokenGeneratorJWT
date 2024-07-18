@@ -19,8 +19,6 @@ namespace TokenGeneratorJWT
         public Form1()
         {
             InitializeComponent();
-            //textBoxJwtToken.Focus();
-
         }
 
         private void buttonBuildToken_Click(object sender, EventArgs e)
@@ -38,26 +36,25 @@ namespace TokenGeneratorJWT
             };
 
             // add custom claims
-            foreach (Control control in flowLayoutPanel1.Controls)
+            foreach (Control control in flowLayoutPanelClaims.Controls)
             {
                 if (control.GetType().Equals(typeof(ClaimsControl)))
                 {
                     ClaimsControl ctrl = (ClaimsControl)control;
                     if (!string.IsNullOrEmpty(ctrl.textBoxClaim.Text))
                     {
-                        claims.Add(new Claim(ctrl.textBoxClaim.Text, ctrl.textBoxValue.Text)); 
+                        claims.Add(new Claim(ctrl.textBoxClaim.Text, ctrl.textBoxValue.Text));
                     }
                 }
             }
 
-            claims.Add(new Claim("Role", "Master2"));
 
             var token = new JwtSecurityToken(
                 issuer: textBoxIssuer.Text,
                 audience: textBoxAudience.Text,
                 claims: claims.ToArray(),
                 expires: expires > 0 ? DateTime.Now.AddMinutes(expires) : null,
-                notBefore: DateTime.Now, // TODO add Texbox to GUI
+                //notBefore: DateTime.Now, 
 
                 signingCredentials: credentials);
 
@@ -73,6 +70,12 @@ namespace TokenGeneratorJWT
 
             textBoxJwtToken.Text = sb.ToString();
 
+        }
+
+        private void buttonAddClaim_Click(object sender, EventArgs e)
+        {
+            ClaimsControl cc = new ClaimsControl();
+            flowLayoutPanelClaims.Controls.Add(cc);
         }
 
         #region TextBoxValidations
@@ -158,26 +161,5 @@ namespace TokenGeneratorJWT
 
 
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            ClaimsControl cc = new ClaimsControl();
-            flowLayoutPanel1.Controls.Add(cc);
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            int _i = 0;
-
-            foreach (Control control in flowLayoutPanel1.Controls)
-            {
-                if (control.GetType().Equals(typeof(ClaimsControl)))
-                {
-                    ClaimsControl ctrl = (ClaimsControl)control;
-
-                    MessageBox.Show("Found ctrl. : " + (_i++).ToString() + " : " + ctrl.textBoxClaim.Text + " : " + ctrl.textBoxValue.Text);
-
-                }
-            }
-        }
     }
 }

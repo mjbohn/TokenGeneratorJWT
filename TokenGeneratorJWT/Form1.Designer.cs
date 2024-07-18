@@ -52,12 +52,13 @@
             labelExp = new Label();
             textBoxExpires = new TextBox();
             groupBox1 = new GroupBox();
-            button2 = new Button();
-            button1 = new Button();
-            flowLayoutPanel1 = new FlowLayoutPanel();
+            buttonAddClaim = new Button();
+            flowLayoutPanelClaims = new FlowLayoutPanel();
+            claimsControl1 = new ClaimsControl();
             contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             groupBox1.SuspendLayout();
+            flowLayoutPanelClaims.SuspendLayout();
             SuspendLayout();
             // 
             // labelSecKey
@@ -145,7 +146,7 @@
             // 
             // textBoxJwtToken
             // 
-            textBoxJwtToken.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            textBoxJwtToken.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             textBoxJwtToken.ContextMenuStrip = contextMenuStrip1;
             textBoxJwtToken.Location = new Point(12, 322);
             textBoxJwtToken.Multiline = true;
@@ -240,9 +241,8 @@
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(button2);
-            groupBox1.Controls.Add(button1);
-            groupBox1.Controls.Add(flowLayoutPanel1);
+            groupBox1.Controls.Add(buttonAddClaim);
+            groupBox1.Controls.Add(flowLayoutPanelClaims);
             groupBox1.Controls.Add(textBoxIssuer);
             groupBox1.Controls.Add(textBoxUserId);
             groupBox1.Controls.Add(textBoxExpires);
@@ -259,38 +259,35 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Claims";
             // 
-            // button2
+            // buttonAddClaim
             // 
-            button2.Location = new Point(14, 180);
-            button2.Name = "button2";
-            button2.Size = new Size(75, 23);
-            button2.TabIndex = 17;
-            button2.Text = "button2";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            buttonAddClaim.Font = new Font("Segoe UI", 7F, FontStyle.Bold);
+            buttonAddClaim.Location = new Point(14, 151);
+            buttonAddClaim.Name = "buttonAddClaim";
+            buttonAddClaim.Size = new Size(185, 20);
+            buttonAddClaim.TabIndex = 16;
+            buttonAddClaim.Text = "add claim";
+            buttonAddClaim.UseVisualStyleBackColor = true;
+            buttonAddClaim.Click += buttonAddClaim_Click;
             // 
-            // button1
+            // flowLayoutPanelClaims
             // 
-            button1.Location = new Point(14, 151);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 16;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            flowLayoutPanelClaims.AutoScroll = true;
+            flowLayoutPanelClaims.Controls.Add(claimsControl1);
+            flowLayoutPanelClaims.Location = new Point(216, 18);
+            flowLayoutPanelClaims.Name = "flowLayoutPanelClaims";
+            flowLayoutPanelClaims.Size = new Size(261, 188);
+            flowLayoutPanelClaims.TabIndex = 15;
             // 
-            // flowLayoutPanel1
+            // claimsControl1
             // 
-            flowLayoutPanel1.AutoScroll = true;
-            flowLayoutPanel1.BorderStyle = BorderStyle.FixedSingle;
-            flowLayoutPanel1.Location = new Point(205, 15);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(300, 188);
-            flowLayoutPanel1.TabIndex = 15;
+            claimsControl1.Location = new Point(3, 3);
+            claimsControl1.Name = "claimsControl1";
+            claimsControl1.Size = new Size(212, 31);
+            claimsControl1.TabIndex = 0;
             // 
             // Form1
             // 
-            AcceptButton = buttonBuildToken;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoValidate = AutoValidate.EnableAllowFocusChange;
@@ -312,6 +309,7 @@
             ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            flowLayoutPanelClaims.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -341,8 +339,8 @@
         private ToolStripTextBox toolStripTextBox1;
         private ToolStripSeparator toolStripSeparator1;
         private GroupBox groupBox1;
-        private FlowLayoutPanel flowLayoutPanel1;
-        private Button button1;
-        private Button button2;
+        private FlowLayoutPanel flowLayoutPanelClaims;
+        private Button buttonAddClaim;
+        private ClaimsControl claimsControl1;
     }
 }
