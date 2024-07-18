@@ -37,6 +37,19 @@ namespace TokenGeneratorJWT
             new Claim(JwtRegisteredClaimNames.Iat, DateTime.Now.ToString())
             };
 
+            // add custom claims
+            foreach (Control control in flowLayoutPanel1.Controls)
+            {
+                if (control.GetType().Equals(typeof(ClaimsControl)))
+                {
+                    ClaimsControl ctrl = (ClaimsControl)control;
+                    if (!string.IsNullOrEmpty(ctrl.textBoxClaim.Text))
+                    {
+                        claims.Add(new Claim(ctrl.textBoxClaim.Text, ctrl.textBoxValue.Text)); 
+                    }
+                }
+            }
+
             claims.Add(new Claim("Role", "Master2"));
 
             var token = new JwtSecurityToken(
@@ -45,7 +58,7 @@ namespace TokenGeneratorJWT
                 claims: claims.ToArray(),
                 expires: expires > 0 ? DateTime.Now.AddMinutes(expires) : null,
                 notBefore: DateTime.Now, // TODO add Texbox to GUI
-             
+
                 signingCredentials: credentials);
 
 
