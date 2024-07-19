@@ -138,6 +138,15 @@ namespace TokenGeneratorJWT
             TextBox tb = sender as TextBox;
             ShowKeylength(tb);
         }
+        private void textBoxEnter(object sender, EventArgs e)
+        {
+            ((TextBox)sender).SelectAll();
+        }
+        private void textBoxMouseClick(object sender, MouseEventArgs e)
+        {
+            ((TextBox)sender).SelectAll();
+        }
+
         #endregion
 
         private void ShowKeylength(TextBox tb)
@@ -187,5 +196,7 @@ namespace TokenGeneratorJWT
         {
             this.Close();
         }
+
+        
     }
 }

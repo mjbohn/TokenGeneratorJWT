@@ -53,7 +53,7 @@
             groupBox1 = new GroupBox();
             buttonAddClaim = new Button();
             flowLayoutPanelClaims = new FlowLayoutPanel();
-            claimsControl1 = new ClaimsControl();
+            claimsControl2 = new ClaimsControl();
             menuStripMainMenu = new MenuStrip();
             fileToolStripMenuItem = new ToolStripMenuItem();
             buildTokenToolStripMenuItem = new ToolStripMenuItem();
@@ -104,6 +104,8 @@
             textBoxUserId.Name = "textBoxUserId";
             textBoxUserId.Size = new Size(100, 23);
             textBoxUserId.TabIndex = 2;
+            textBoxUserId.MouseClick += textBoxMouseClick;
+            textBoxUserId.Enter += textBoxEnter;
             // 
             // labelSub
             // 
@@ -131,6 +133,8 @@
             textBoxIssuer.Name = "textBoxIssuer";
             textBoxIssuer.Size = new Size(100, 23);
             textBoxIssuer.TabIndex = 3;
+            textBoxIssuer.MouseClick += textBoxMouseClick;
+            textBoxIssuer.Enter += textBoxEnter;
             // 
             // labelAud
             // 
@@ -148,6 +152,8 @@
             textBoxAudience.Name = "textBoxAudience";
             textBoxAudience.Size = new Size(100, 23);
             textBoxAudience.TabIndex = 4;
+            textBoxAudience.MouseClick += textBoxMouseClick;
+            textBoxAudience.Enter += textBoxEnter;
             // 
             // textBoxJwtToken
             // 
@@ -218,7 +224,7 @@
             // 
             // textBoxKeyLength
             // 
-            textBoxKeyLength.Location = new Point(326, 25);
+            textBoxKeyLength.Location = new Point(340, 25);
             textBoxKeyLength.Name = "textBoxKeyLength";
             textBoxKeyLength.ReadOnly = true;
             textBoxKeyLength.Size = new Size(41, 23);
@@ -242,6 +248,8 @@
             textBoxExpires.Size = new Size(100, 23);
             textBoxExpires.TabIndex = 5;
             textBoxExpires.Text = "0";
+            textBoxExpires.MouseClick += textBoxMouseClick;
+            textBoxExpires.Enter += textBoxEnter;
             textBoxExpires.Validating += textBoxExpires_Validating;
             // 
             // groupBox1
@@ -278,18 +286,18 @@
             // flowLayoutPanelClaims
             // 
             flowLayoutPanelClaims.AutoScroll = true;
-            flowLayoutPanelClaims.Controls.Add(claimsControl1);
+            flowLayoutPanelClaims.Controls.Add(claimsControl2);
             flowLayoutPanelClaims.Location = new Point(216, 18);
             flowLayoutPanelClaims.Name = "flowLayoutPanelClaims";
-            flowLayoutPanelClaims.Size = new Size(261, 188);
+            flowLayoutPanelClaims.Size = new Size(277, 188);
             flowLayoutPanelClaims.TabIndex = 15;
             // 
-            // claimsControl1
+            // claimsControl2
             // 
-            claimsControl1.Location = new Point(3, 3);
-            claimsControl1.Name = "claimsControl1";
-            claimsControl1.Size = new Size(212, 31);
-            claimsControl1.TabIndex = 0;
+            claimsControl2.Location = new Point(3, 3);
+            claimsControl2.Name = "claimsControl2";
+            claimsControl2.Size = new Size(247, 31);
+            claimsControl2.TabIndex = 1;
             // 
             // menuStripMainMenu
             // 
@@ -312,7 +320,7 @@
             buildTokenToolStripMenuItem.Enabled = false;
             buildTokenToolStripMenuItem.Name = "buildTokenToolStripMenuItem";
             buildTokenToolStripMenuItem.ShortcutKeys = Keys.F5;
-            buildTokenToolStripMenuItem.Size = new Size(180, 22);
+            buildTokenToolStripMenuItem.Size = new Size(153, 22);
             buildTokenToolStripMenuItem.Text = "&Build token";
             buildTokenToolStripMenuItem.Click += buildTokenToolStripMenuItem_Click;
             // 
@@ -320,7 +328,7 @@
             // 
             addClaimToolStripMenuItem.Name = "addClaimToolStripMenuItem";
             addClaimToolStripMenuItem.ShortcutKeys = Keys.F2;
-            addClaimToolStripMenuItem.Size = new Size(180, 22);
+            addClaimToolStripMenuItem.Size = new Size(153, 22);
             addClaimToolStripMenuItem.Text = "&Add claim";
             addClaimToolStripMenuItem.Click += addClaimToolStripMenuItem_Click;
             // 
@@ -328,7 +336,7 @@
             // 
             exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             exitToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.X;
-            exitToolStripMenuItem.Size = new Size(180, 22);
+            exitToolStripMenuItem.Size = new Size(153, 22);
             exitToolStripMenuItem.Text = "E&xit";
             exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
             // 
@@ -390,11 +398,11 @@
         private GroupBox groupBox1;
         private FlowLayoutPanel flowLayoutPanelClaims;
         private Button buttonAddClaim;
-        private ClaimsControl claimsControl1;
         private MenuStrip menuStripMainMenu;
         private ToolStripMenuItem fileToolStripMenuItem;
         private ToolStripMenuItem buildTokenToolStripMenuItem;
         private ToolStripMenuItem addClaimToolStripMenuItem;
         private ToolStripMenuItem exitToolStripMenuItem;
+        private ClaimsControl claimsControl2;
     }
 }
