@@ -13,12 +13,17 @@ namespace TokenGeneratorJWT
     public partial class Form1 : Form
     {
         private int expires = 0;
-        private string TokenString { get; set; }
-        private string PayloadJSON { get; set; }
+        private string TokenString;
+        private string PayloadJSON;
+        private int MinKeyLength = 256;
+
+        private string SecurityAlgorithm = SecurityAlgorithms.HmacSha256;
 
         public Form1()
         {
             InitializeComponent();
+            SetInfoLabel();
+
         }
 
         private void buttonBuildToken_Click(object sender, EventArgs e)
@@ -36,7 +41,7 @@ namespace TokenGeneratorJWT
                 return;
             }
 
-            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+            var credentials = new SigningCredentials(securityKey, SecurityAlgorithm);
 
             var claims = new List<Claim>()
             {
@@ -93,9 +98,9 @@ namespace TokenGeneratorJWT
         {
             TextBox tb = sender as TextBox;
 
-            if (tb.Text.Length < 32)
+            if (tb.Text.Length < MinKeyLength / 8)
             {
-                errorProvider1.SetError(textBoxSecurityKey, "Key must be >= 256 bits (32 char)");
+                errorProvider1.SetError(textBoxSecurityKey, $"Key must be >= {MinKeyLength} bits ({MinKeyLength / 8} char)");
                 //e.Cancel = true;
             }
             else
@@ -104,8 +109,8 @@ namespace TokenGeneratorJWT
                 //buttonBuildToken.Enabled = true;
             }
 
-            buttonBuildToken.Enabled = (tb.TextLength >= 32);
-            buildTokenToolStripMenuItem.Enabled = (tb.TextLength >= 32);
+            buttonBuildToken.Enabled = (tb.TextLength >= MinKeyLength / 8);
+            buildTokenToolStripMenuItem.Enabled = (tb.TextLength >= MinKeyLength / 8);
 
             ShowKeylength(tb);
         }
@@ -149,11 +154,6 @@ namespace TokenGeneratorJWT
 
         #endregion
 
-        private void ShowKeylength(TextBox tb)
-        {
-            textBoxKeyLength.Text = (tb.Text.Length * 8).ToString() + " bit";
-        }
-
         #region ContextMenuTextBox
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
@@ -182,6 +182,7 @@ namespace TokenGeneratorJWT
 
         #endregion
 
+        #region MenuEvents
         private void addClaimToolStripMenuItem_Click(object sender, EventArgs e)
         {
             buttonAddClaim_Click(this, EventArgs.Empty);
@@ -196,7 +197,46 @@ namespace TokenGeneratorJWT
         {
             this.Close();
         }
+        #endregion // MenuEvents
 
-        
+        #region helper
+        private void ShowKeylength(TextBox tb)
+        {
+            textBoxKeyLength.Text = (tb.Text.Length * 8).ToString() + " bit";
+        }
+
+        private void SetInfoLabel()
+        {
+            labelKeyInfo.Text = string.Format("Key must be >= {0} bits ({1} char)", MinKeyLength, MinKeyLength / 8);
+        }
+
+        private void SetParamsForKeyAlgorithm(string securityAlgorithm, int minKeyLength)
+        {
+            SecurityAlgorithm = securityAlgorithm;
+            MessageBox.Show("Algorithm set to " + securityAlgorithm, "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MinKeyLength = minKeyLength;
+            SetInfoLabel();
+        }
+
+        private void SetEncryptionAlgorithm(object sender, EventArgs e)
+        {
+            ToolStripMenuItem menuItem = sender as ToolStripMenuItem;
+
+            switch (menuItem.Name)
+            {
+                case "MenuHamacSha256":
+                    SetParamsForKeyAlgorithm(SecurityAlgorithms.HmacSha256, 256);
+                    break;
+                case "MenuHamacSha384":
+                    SetParamsForKeyAlgorithm(SecurityAlgorithms.HmacSha384, 384);
+                    break;
+                case "MenuHamacSha512":
+                    SetParamsForKeyAlgorithm(SecurityAlgorithms.HmacSha512, 512);
+                    break;
+                default:
+                    break;
+            }
+        }
+        #endregion //helper
     }
 }

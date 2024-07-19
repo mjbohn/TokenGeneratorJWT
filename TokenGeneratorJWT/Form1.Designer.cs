@@ -46,7 +46,7 @@
             toolStripMenuItem2 = new ToolStripMenuItem();
             copyBothToolStripMenuItem = new ToolStripMenuItem();
             errorProvider1 = new ErrorProvider(components);
-            label6 = new Label();
+            labelKeyInfo = new Label();
             textBoxKeyLength = new TextBox();
             labelExp = new Label();
             textBoxExpires = new TextBox();
@@ -59,6 +59,10 @@
             buildTokenToolStripMenuItem = new ToolStripMenuItem();
             addClaimToolStripMenuItem = new ToolStripMenuItem();
             exitToolStripMenuItem = new ToolStripMenuItem();
+            keyEncToolStripMenuItem = new ToolStripMenuItem();
+            MenuHamacSha256 = new ToolStripMenuItem();
+            MenuHamacSha384 = new ToolStripMenuItem();
+            MenuHamacSha512 = new ToolStripMenuItem();
             contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             groupBox1.SuspendLayout();
@@ -212,15 +216,15 @@
             // 
             errorProvider1.ContainerControl = this;
             // 
-            // label6
+            // labelKeyInfo
             // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 7F);
-            label6.Location = new Point(109, 51);
-            label6.Name = "label6";
-            label6.Size = new Size(154, 12);
-            label6.TabIndex = 3;
-            label6.Text = "Key must be >= 256 bits (32 char)";
+            labelKeyInfo.AutoSize = true;
+            labelKeyInfo.Font = new Font("Segoe UI", 7F);
+            labelKeyInfo.Location = new Point(109, 51);
+            labelKeyInfo.Name = "labelKeyInfo";
+            labelKeyInfo.Size = new Size(154, 12);
+            labelKeyInfo.TabIndex = 3;
+            labelKeyInfo.Text = "Key must be >= 256 bits (32 char)";
             // 
             // textBoxKeyLength
             // 
@@ -301,7 +305,7 @@
             // 
             // menuStripMainMenu
             // 
-            menuStripMainMenu.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem });
+            menuStripMainMenu.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, keyEncToolStripMenuItem });
             menuStripMainMenu.Location = new Point(0, 0);
             menuStripMainMenu.Name = "menuStripMainMenu";
             menuStripMainMenu.Size = new Size(604, 24);
@@ -340,6 +344,36 @@
             exitToolStripMenuItem.Text = "E&xit";
             exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
             // 
+            // keyEncToolStripMenuItem
+            // 
+            keyEncToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { MenuHamacSha256, MenuHamacSha384, MenuHamacSha512 });
+            keyEncToolStripMenuItem.Name = "keyEncToolStripMenuItem";
+            keyEncToolStripMenuItem.Size = new Size(57, 20);
+            keyEncToolStripMenuItem.Text = "KeyEnc";
+            // 
+            // MenuHamacSha256
+            // 
+            MenuHamacSha256.CheckOnClick = true;
+            MenuHamacSha256.Name = "MenuHamacSha256";
+            MenuHamacSha256.Size = new Size(167, 22);
+            MenuHamacSha256.Text = "HAMAC SHA-256";
+            MenuHamacSha256.Click += SetEncryptionAlgorithm;
+            // 
+            // MenuHamacSha384
+            // 
+            MenuHamacSha384.CheckOnClick = true;
+            MenuHamacSha384.Name = "MenuHamacSha384";
+            MenuHamacSha384.Size = new Size(167, 22);
+            MenuHamacSha384.Text = "HAMAC SHA-384";
+            MenuHamacSha384.Click += SetEncryptionAlgorithm;
+            // 
+            // MenuHamacSha512
+            // 
+            MenuHamacSha512.Name = "MenuHamacSha512";
+            MenuHamacSha512.Size = new Size(167, 22);
+            MenuHamacSha512.Text = "HAMAC SHA-512";
+            MenuHamacSha512.Click += SetEncryptionAlgorithm;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -353,7 +387,7 @@
             Controls.Add(textBoxKeyLength);
             Controls.Add(labelSecKey);
             Controls.Add(textBoxJwtToken);
-            Controls.Add(label6);
+            Controls.Add(labelKeyInfo);
             Controls.Add(buttonBuildToken);
             MainMenuStrip = menuStripMainMenu;
             MaximizeBox = false;
@@ -385,7 +419,7 @@
         private TextBox textBoxAudience;
         private TextBox textBoxJwtToken;
         private ErrorProvider errorProvider1;
-        private Label label6;
+        private Label labelKeyInfo;
         private TextBox textBoxKeyLength;
         private Label labelExp;
         private TextBox textBoxExpires;
@@ -404,5 +438,9 @@
         private ToolStripMenuItem addClaimToolStripMenuItem;
         private ToolStripMenuItem exitToolStripMenuItem;
         private ClaimsControl claimsControl2;
+        private ToolStripMenuItem keyEncToolStripMenuItem;
+        private ToolStripMenuItem MenuHamacSha256;
+        private ToolStripMenuItem MenuHamacSha384;
+        private ToolStripMenuItem MenuHamacSha512;
     }
 }
