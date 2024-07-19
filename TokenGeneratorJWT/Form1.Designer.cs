@@ -63,11 +63,14 @@
             MenuHamacSha256 = new ToolStripMenuItem();
             MenuHamacSha384 = new ToolStripMenuItem();
             MenuHamacSha512 = new ToolStripMenuItem();
+            statusStrip1 = new StatusStrip();
+            StatusLabelSecurityAlgorithm = new ToolStripStatusLabel();
             contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             groupBox1.SuspendLayout();
             flowLayoutPanelClaims.SuspendLayout();
             menuStripMainMenu.SuspendLayout();
+            statusStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // labelSecKey
@@ -168,7 +171,7 @@
             textBoxJwtToken.Name = "textBoxJwtToken";
             textBoxJwtToken.ReadOnly = true;
             textBoxJwtToken.ScrollBars = ScrollBars.Both;
-            textBoxJwtToken.Size = new Size(580, 127);
+            textBoxJwtToken.Size = new Size(580, 219);
             textBoxJwtToken.TabIndex = 0;
             textBoxJwtToken.TabStop = false;
             // 
@@ -353,7 +356,6 @@
             // 
             // MenuHamacSha256
             // 
-            MenuHamacSha256.CheckOnClick = true;
             MenuHamacSha256.Name = "MenuHamacSha256";
             MenuHamacSha256.Size = new Size(167, 22);
             MenuHamacSha256.Text = "HAMAC SHA-256";
@@ -361,7 +363,6 @@
             // 
             // MenuHamacSha384
             // 
-            MenuHamacSha384.CheckOnClick = true;
             MenuHamacSha384.Name = "MenuHamacSha384";
             MenuHamacSha384.Size = new Size(167, 22);
             MenuHamacSha384.Text = "HAMAC SHA-384";
@@ -374,13 +375,28 @@
             MenuHamacSha512.Text = "HAMAC SHA-512";
             MenuHamacSha512.Click += SetEncryptionAlgorithm;
             // 
+            // statusStrip1
+            // 
+            statusStrip1.Items.AddRange(new ToolStripItem[] { StatusLabelSecurityAlgorithm });
+            statusStrip1.Location = new Point(0, 544);
+            statusStrip1.Name = "statusStrip1";
+            statusStrip1.Size = new Size(604, 22);
+            statusStrip1.TabIndex = 17;
+            statusStrip1.Text = "statusStrip1";
+            // 
+            // StatusLabelSecurityAlgorithm
+            // 
+            StatusLabelSecurityAlgorithm.Name = "StatusLabelSecurityAlgorithm";
+            StatusLabelSecurityAlgorithm.Size = new Size(0, 17);
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoValidate = AutoValidate.EnableAllowFocusChange;
             CausesValidation = false;
-            ClientSize = new Size(604, 461);
+            ClientSize = new Size(604, 566);
+            Controls.Add(statusStrip1);
             Controls.Add(menuStripMainMenu);
             Controls.Add(groupBox1);
             Controls.Add(textBoxSecurityKey);
@@ -402,6 +418,8 @@
             flowLayoutPanelClaims.ResumeLayout(false);
             menuStripMainMenu.ResumeLayout(false);
             menuStripMainMenu.PerformLayout();
+            statusStrip1.ResumeLayout(false);
+            statusStrip1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -442,5 +460,7 @@
         private ToolStripMenuItem MenuHamacSha256;
         private ToolStripMenuItem MenuHamacSha384;
         private ToolStripMenuItem MenuHamacSha512;
+        private StatusStrip statusStrip1;
+        private ToolStripStatusLabel StatusLabelSecurityAlgorithm;
     }
 }

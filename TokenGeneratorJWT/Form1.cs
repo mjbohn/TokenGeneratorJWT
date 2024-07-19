@@ -22,8 +22,7 @@ namespace TokenGeneratorJWT
         public Form1()
         {
             InitializeComponent();
-            SetInfoLabel();
-
+            SetParamsForKeyAlgorithm(SecurityAlgorithm,MinKeyLength);
         }
 
         private void buttonBuildToken_Click(object sender, EventArgs e)
@@ -216,6 +215,7 @@ namespace TokenGeneratorJWT
             MessageBox.Show("Algorithm set to " + securityAlgorithm, "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
             MinKeyLength = minKeyLength;
             SetInfoLabel();
+            StatusLabelSecurityAlgorithm.Text = securityAlgorithm;
         }
 
         private void SetEncryptionAlgorithm(object sender, EventArgs e)
