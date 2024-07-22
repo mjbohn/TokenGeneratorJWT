@@ -65,6 +65,8 @@
             MenuHamacSha512 = new ToolStripMenuItem();
             statusStrip1 = new StatusStrip();
             StatusLabelSecurityAlgorithm = new ToolStripStatusLabel();
+            StatusLabelVersion = new ToolStripStatusLabel();
+            toolStripStatusLabel1 = new ToolStripStatusLabel();
             contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             groupBox1.SuspendLayout();
@@ -377,7 +379,7 @@
             // 
             // statusStrip1
             // 
-            statusStrip1.Items.AddRange(new ToolStripItem[] { StatusLabelSecurityAlgorithm });
+            statusStrip1.Items.AddRange(new ToolStripItem[] { StatusLabelSecurityAlgorithm, toolStripStatusLabel1, StatusLabelVersion });
             statusStrip1.Location = new Point(0, 544);
             statusStrip1.Name = "statusStrip1";
             statusStrip1.Size = new Size(604, 22);
@@ -388,6 +390,19 @@
             // 
             StatusLabelSecurityAlgorithm.Name = "StatusLabelSecurityAlgorithm";
             StatusLabelSecurityAlgorithm.Size = new Size(0, 17);
+            // 
+            // StatusLabelVersion
+            // 
+            StatusLabelVersion.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            StatusLabelVersion.Name = "StatusLabelVersion";
+            StatusLabelVersion.Size = new Size(45, 17);
+            StatusLabelVersion.Text = "version";
+            // 
+            // toolStripStatusLabel1
+            // 
+            toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            toolStripStatusLabel1.Size = new Size(513, 17);
+            toolStripStatusLabel1.Spring = true;
             // 
             // Form1
             // 
@@ -462,5 +477,7 @@
         private ToolStripMenuItem MenuHamacSha512;
         private StatusStrip statusStrip1;
         private ToolStripStatusLabel StatusLabelSecurityAlgorithm;
+        private ToolStripStatusLabel toolStripStatusLabel1;
+        private ToolStripStatusLabel StatusLabelVersion;
     }
 }

@@ -1,6 +1,7 @@
 using Microsoft.IdentityModel.Tokens;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
+using System.Reflection;
 using System.Security.Claims;
 using System.Text;
 using System.Text.Json;
@@ -23,6 +24,7 @@ namespace TokenGeneratorJWT
         {
             InitializeComponent();
             SetParamsForKeyAlgorithm(SecurityAlgorithm,MinKeyLength);
+            StatusLabelVersion.Text = Assembly.GetEntryAssembly().GetName().Version.ToString();
         }
 
         private void buttonBuildToken_Click(object sender, EventArgs e)
