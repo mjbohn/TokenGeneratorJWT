@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             labelSecKey = new Label();
             textBoxSecurityKey = new TextBox();
             buttonBuildToken = new Button();
@@ -65,8 +66,8 @@
             MenuHamacSha512 = new ToolStripMenuItem();
             statusStrip1 = new StatusStrip();
             StatusLabelSecurityAlgorithm = new ToolStripStatusLabel();
-            StatusLabelVersion = new ToolStripStatusLabel();
             toolStripStatusLabel1 = new ToolStripStatusLabel();
+            StatusLabelVersion = new ToolStripStatusLabel();
             contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             groupBox1.SuspendLayout();
@@ -99,9 +100,9 @@
             // 
             buttonBuildToken.Enabled = false;
             buttonBuildToken.Font = new Font("Segoe UI", 7F, FontStyle.Bold);
-            buttonBuildToken.Location = new Point(12, 293);
+            buttonBuildToken.Location = new Point(7, 186);
             buttonBuildToken.Name = "buttonBuildToken";
-            buttonBuildToken.Size = new Size(192, 23);
+            buttonBuildToken.Size = new Size(192, 20);
             buttonBuildToken.TabIndex = 6;
             buttonBuildToken.Text = "build token (F5)";
             buttonBuildToken.UseVisualStyleBackColor = true;
@@ -168,12 +169,12 @@
             // 
             textBoxJwtToken.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             textBoxJwtToken.ContextMenuStrip = contextMenuStrip1;
-            textBoxJwtToken.Location = new Point(12, 322);
+            textBoxJwtToken.Location = new Point(12, 293);
             textBoxJwtToken.Multiline = true;
             textBoxJwtToken.Name = "textBoxJwtToken";
             textBoxJwtToken.ReadOnly = true;
             textBoxJwtToken.ScrollBars = ScrollBars.Both;
-            textBoxJwtToken.Size = new Size(580, 219);
+            textBoxJwtToken.Size = new Size(580, 248);
             textBoxJwtToken.TabIndex = 0;
             textBoxJwtToken.TabStop = false;
             // 
@@ -272,6 +273,7 @@
             groupBox1.Controls.Add(labelExp);
             groupBox1.Controls.Add(labelIss);
             groupBox1.Controls.Add(textBoxAudience);
+            groupBox1.Controls.Add(buttonBuildToken);
             groupBox1.Controls.Add(labelAud);
             groupBox1.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             groupBox1.Location = new Point(12, 66);
@@ -284,9 +286,9 @@
             // buttonAddClaim
             // 
             buttonAddClaim.Font = new Font("Segoe UI", 7F, FontStyle.Bold);
-            buttonAddClaim.Location = new Point(14, 151);
+            buttonAddClaim.Location = new Point(7, 151);
             buttonAddClaim.Name = "buttonAddClaim";
-            buttonAddClaim.Size = new Size(185, 20);
+            buttonAddClaim.Size = new Size(192, 20);
             buttonAddClaim.TabIndex = 16;
             buttonAddClaim.Text = "add claim (F2)";
             buttonAddClaim.UseVisualStyleBackColor = true;
@@ -391,18 +393,18 @@
             StatusLabelSecurityAlgorithm.Name = "StatusLabelSecurityAlgorithm";
             StatusLabelSecurityAlgorithm.Size = new Size(0, 17);
             // 
+            // toolStripStatusLabel1
+            // 
+            toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            toolStripStatusLabel1.Size = new Size(544, 17);
+            toolStripStatusLabel1.Spring = true;
+            // 
             // StatusLabelVersion
             // 
             StatusLabelVersion.DisplayStyle = ToolStripItemDisplayStyle.Text;
             StatusLabelVersion.Name = "StatusLabelVersion";
             StatusLabelVersion.Size = new Size(45, 17);
             StatusLabelVersion.Text = "version";
-            // 
-            // toolStripStatusLabel1
-            // 
-            toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            toolStripStatusLabel1.Size = new Size(513, 17);
-            toolStripStatusLabel1.Spring = true;
             // 
             // Form1
             // 
@@ -419,7 +421,7 @@
             Controls.Add(labelSecKey);
             Controls.Add(textBoxJwtToken);
             Controls.Add(labelKeyInfo);
-            Controls.Add(buttonBuildToken);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = menuStripMainMenu;
             MaximizeBox = false;
             Name = "Form1";

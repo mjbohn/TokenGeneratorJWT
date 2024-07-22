@@ -23,8 +23,8 @@ namespace TokenGeneratorJWT
         public Form1()
         {
             InitializeComponent();
-            SetParamsForKeyAlgorithm(SecurityAlgorithm,MinKeyLength);
-            StatusLabelVersion.Text = Assembly.GetEntryAssembly().GetName().Version.ToString();
+            SetParamsForKeyAlgorithm(SecurityAlgorithm, MinKeyLength);
+            StatusLabelVersion.Text = GetVersion();
         }
 
         private void buttonBuildToken_Click(object sender, EventArgs e)
@@ -75,7 +75,15 @@ namespace TokenGeneratorJWT
                 signingCredentials: credentials);
 
 
-            TokenString = new JwtSecurityTokenHandler().WriteToken(token);
+            try
+            {
+                TokenString = new JwtSecurityTokenHandler().WriteToken(token);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             PayloadJSON = JsonNode.Parse(token.Payload.SerializeToJson()).ToString();
 
@@ -201,7 +209,7 @@ namespace TokenGeneratorJWT
         }
         #endregion // MenuEvents
 
-        #region helper
+        #region Helper
         private void ShowKeylength(TextBox tb)
         {
             textBoxKeyLength.Text = (tb.Text.Length * 8).ToString() + " bit";
@@ -239,6 +247,13 @@ namespace TokenGeneratorJWT
                 default:
                     break;
             }
+        }
+        
+        private string GetVersion()
+        { 
+            return $"v{Assembly.GetEntryAssembly().GetName().Version.Major}" +
+                   $".{Assembly.GetEntryAssembly().GetName().Version.Minor}" +
+                   $".{Assembly.GetEntryAssembly().GetName().Version.Build}";
         }
         #endregion //helper
     }
