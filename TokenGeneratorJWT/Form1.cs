@@ -129,7 +129,8 @@ namespace TokenGeneratorJWT
             }
 
         }
-        #endregion
+
+        #endregion // TextBoxValidations
 
         #region TextBoxEvents
         private void textBoxSecurityKey_Enter(object sender, EventArgs e)
@@ -151,7 +152,7 @@ namespace TokenGeneratorJWT
             ((TextBox)sender).SelectAll();
         }
 
-        #endregion
+        #endregion // TextBoxEvents
 
         #region ContextMenuTextBox
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
@@ -179,7 +180,7 @@ namespace TokenGeneratorJWT
             }
         }
 
-        #endregion
+        #endregion // ContextMenuTextBox
 
         #region MenuEvents
         private void addClaimToolStripMenuItem_Click(object sender, EventArgs e)
@@ -212,7 +213,7 @@ namespace TokenGeneratorJWT
         private void SetParamsForKeyAlgorithm(string securityAlgorithm, int minKeyLength)
         {
             SecurityAlgorithm = securityAlgorithm;
-            MessageBox.Show("Algorithm set to " + securityAlgorithm, "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //MessageBox.Show("Algorithm set to " + securityAlgorithm, "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
             MinKeyLength = minKeyLength;
             SetInfoLabel();
             StatusLabelSecurityAlgorithm.Text = securityAlgorithm;
