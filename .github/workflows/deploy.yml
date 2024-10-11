@@ -41,16 +41,16 @@ jobs:
     #       SIGN_CERT_PFX: ${{ secrets.SIGN_CERT_PFX }}
     #       SIGN_CERT_PASSWORD: ${{ secrets.SIGN_CERT_PASSWORD }}
 
-      - name: Create ZIP of Published Files
-        run: |
-          cd TokenGeneratorJWT\bin\Release\publish
-          zip -r ../../YourApp-Release.zip .
+    #   - name: Create ZIP of Published Files
+    #     run: |
+    #       cd TokenGeneratorJWT\bin\Release\publish
+    #       zip -r ../../YourApp-Release.zip .
 
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: TokenGeneratorJWT-Release
-          path: TokenGeneratorJWT/bin/Release/YourApp-Release.zip
+    #   - name: Upload Artifact
+    #     uses: actions/upload-artifact@v3
+    #     with:
+    #       name: TokenGeneratorJWT-Release
+    #       path: TokenGeneratorJWT/bin/Release/YourApp-Release.zip
 
   release:
     needs: build
