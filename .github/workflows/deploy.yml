@@ -56,11 +56,11 @@ jobs:
     needs: build
     runs-on: windows-latest
     steps:
-      - name: Download Artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: YTokenGeneratorJWT-Release
-          path: .
+    #   - name: Download Artifact
+    #     uses: actions/download-artifact@v3
+    #     with:
+    #       name: YTokenGeneratorJWT-Release
+    #       path: .
 
       - name: Create GitHub Release
         id: create_release
