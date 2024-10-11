@@ -1,0 +1,84 @@
+name: Build and Deploy ClickOnce App
+
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - 'v*.*.*'  # Optional: Trigger nur bei Tags wie v1.0.0
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Setup MSBuild Path
+        uses: microsoft/setup-msbuild@v1.1
+        with:
+          vs-version: 'latest'
+
+      - name: Setup .NET Framework (falls benötigt)
+        # Falls Ihr Projekt .NET Framework nutzt, stellen Sie sicher, dass die benötigte Version installiert ist.
+        # Ansonsten können Sie diesen Schritt überspringen.
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '4.8.x'  # Beispiel für .NET Framework 4.8
+
+      - name: Restore NuGet Packages
+        run: nuget restore TokenGeneratorJWT.sln
+
+      - name: Build Solution
+        run: msbuild TokenGeneratorJWT.sln /p:Configuration=Release /p:DeployOnBuild=true /p:PublishProfile=FolderProfile
+
+    #   - name: Sign ClickOnce Manifests
+    #     if: secrets.SIGN_CERT_PFX && secrets.SIGN_CERT_PASSWORD
+    #     run: |
+    #       signtool sign /f "%GITHUB_WORKSPACE%\path\to\certificate.pfx" /p ${{ secrets.SIGN_CERT_PASSWORD }} /t http://timestamp.digicert.com "%GITHUB_WORKSPACE%\YourProject\bin\Release\YourApp.application"
+    #     env:
+    #       SIGN_CERT_PFX: ${{ secrets.SIGN_CERT_PFX }}
+    #       SIGN_CERT_PASSWORD: ${{ secrets.SIGN_CERT_PASSWORD }}
+
+      - name: Create ZIP of Published Files
+        run: |
+          cd TokenGeneratorJWT\bin\Release\publish
+          zip -r ../../YourApp-Release.zip .
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: TokenGeneratorJWT-Release
+          path: TokenGeneratorJWT/bin/Release/YourApp-Release.zip
+
+  release:
+    needs: build
+    runs-on: windows-latest
+    steps:
+      - name: Download Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: YTokenGeneratorJWT-Release
+          path: .
+
+      - name: Create GitHub Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
+
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./YourApp-Release.zip
+          asset_name: YourApp-Release.zip
+          asset_content_type: application/zip
