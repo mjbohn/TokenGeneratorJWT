@@ -25,7 +25,7 @@ jobs:
         # Ansonsten können Sie diesen Schritt überspringen.
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '4.8.x'  # Beispiel für .NET Framework 4.8
+          dotnet-version: '8.x.x'  # Beispiel für .NET Framework 4.8
 
       - name: Restore NuGet Packages
         run: nuget restore TokenGeneratorJWT.sln
